@@ -14590,11 +14590,19 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Introducci%C3%B3n">Introducci&#243;n<a class="anchor-link" href="#Introducci%C3%B3n">&#182;</a></h2>
-<pre><code>Objetivo
-   Realizar un proceso ETL básico en Pyspark
-¿Para qué?
-  Practicar lo aprendido en el tutorial de ETL</code></pre>
+<h2 id="Introducci%C3%B3n">Introducci&#243;n<a class="anchor-link" href="#Introducci%C3%B3n">&#182;</a></h2><p>Sobre los resultados del entendimiento de datos, Wide World Importers les comenta lo siguiente:</p>
+<ul>
+<li>Cada fila representa una transacción o movimiento de productos en el inventario</li>
+<li>Los días de pago no pueden ser negativos no tiene sentido para nuestro negocio. Por favor corregir multiplicando los datos negativos por -1.</li>
+<li>Sobre la regla de negocio dada para la actividad de entendimiento de datos “La cantidad máxima de productos movidos es 50 millones por transaccion”, el negocio revisó y encontró que efectivamente gracias a los avances en su operación, ya puede mover más que la cantidad de 50 millones por transacción, por lo cual elimina esa regla de negocio.</li>
+<li>La falta de datos antes del 2014 es un error de extracción de datos. Los nuevos datos incluyen este año.</li>
+<li>Nuestro análisis concluye que la información que se ha duplicado totalmente no es útil. Por favor no tenerlos en cuenta.</li>
+<li>El formato de fechas manejado es YYYY-MM-DD HH:MM:SS si tienen hora, minutos y segundos. De lo contrario el formato es YYYY-MM-DD”: En cuanto a formatos de fechas estamos de acuerdo con que los estandarizemos y el formato sea el especificado en la regla de negocio.</li>
+<li>Existen proveedores que tienen 2 filas una con un nombre y otra con el mismo nombre mas un “Inc” o “Ltd”. Unimos estos a un solo proveedor dado que se trató de un error de digitación.</li>
+<li>El código postal igual para todos nuestros proveedores es un error que también fue corregido.</li>
+<li>Cantidades negativas significan salidas de productos del inventario</li>
+<li>El negocio indica que las tablas de categoriasProveedores y TiposTransaccion fueron analizadas previamente, por su grupo de consultores.</li>
+</ul>
 
 </div>
 </div>
@@ -15024,6 +15032,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 </div>
 </div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<details>
+  <summary>Evidencia</summary>
+  <img src="https://robertcastro.co/wp-content/uploads/2024/07/proveedor.jpg">
+</details>
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15312,6 +15334,20 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<details>
+  <summary>Evidencia</summary>
+  <img src="https://robertcastro.co/wp-content/uploads/2024/07/tipo_transaccion.jpg">
+</details>
+</div>
+</div>
+</div>
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -15661,6 +15697,20 @@ only showing top 20 rows
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<details>
+  <summary>Evidencia</summary>
+  <img src="https://robertcastro.co/wp-content/uploads/2024/07/fecha.jpg">
+</details>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h3 id="Hecho_Movimiento">Hecho_Movimiento<a class="anchor-link" href="#Hecho_Movimiento">&#182;</a></h3>
 </div>
 </div>
@@ -15806,11 +15856,7 @@ only showing top 20 rows
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="n">to_date</span><span class="p">,</span> <span class="n">col</span><span class="p">,</span> <span class="n">when</span><span class="p">,</span> <span class="n">udf</span><span class="p">,</span> <span class="n">regexp_replace</span>
-<span class="kn">from</span> <span class="nn">pyspark.sql.types</span> <span class="kn">import</span> <span class="n">StringType</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="c1"># Definir una función UDF para convertir el formato &#39;MMM DD, YYYY&#39; a &#39;YYYY-MM-DD&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Definir una función UDF para convertir el formato &#39;MMM DD, YYYY&#39; a &#39;YYYY-MM-DD&#39;</span>
 <span class="k">def</span> <span class="nf">convert_to_date</span><span class="p">(</span><span class="n">date_str</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_str</span><span class="p">,</span> <span class="s1">&#39;%b </span><span class="si">%d</span><span class="s1">,%Y&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
@@ -16076,6 +16122,18 @@ Número de registros con fechas anteriores a 2014: 122199
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>El análisis ha revelado que hay 122,199 registros en la tabla de movimientos con fechas anteriores al año 2014. Este hallazgo es consistente con la corrección del error de extracción de datos, ya que la falta de datos antes de 2014 había sido previamente identificada como un problema. La inclusión de estos registros confirma que el proceso de extracción de datos se ha ajustado correctamente para capturar todas las transacciones relevantes, incluso aquellas realizadas antes de 2014. Esto asegura la integridad y la completitud del conjunto de datos, proporcionando una visión más precisa y comprensiva de las operaciones históricas.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h5 id="Validar-duplicados">Validar duplicados<a class="anchor-link" href="#Validar-duplicados">&#182;</a></h5>
 </div>
 </div>
@@ -16312,6 +16370,18 @@ Número de registros con fechas en formato inválido: 0
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Se verifica la normalización en el nombre de los proveedores</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h5 id="Verificar-el-c%C3%B3digo-postal-de-los-Proveedores">Verificar el c&#243;digo postal de los Proveedores<a class="anchor-link" href="#Verificar-el-c%C3%B3digo-postal-de-los-Proveedores">&#182;</a></h5>
 </div>
 </div>
@@ -16389,7 +16459,7 @@ Número de registros con fechas en formato inválido: 0
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Verificamos que tanto Consolidated Messenger y Woodgrove Bank tienen el mismo código postal</p>
+<p>En el análisis realizado, se identificó que el código postal 94101 está asociado a dos proveedores distintos: Consolidated Messenger y Woodgrove Bank. Esto podría ser un posible error de datos, ya que es inusual que dos proveedores de categorías tan diferentes (servicios de mensajería y servicios financieros) compartan el mismo código postal. Este hallazgo indica la necesidad de revisar y corregir los datos de código postal para asegurar la precisión y la integridad de la información en la base de datos de proveedores.</p>
 
 </div>
 </div>
@@ -16458,22 +16528,20 @@ Número de registros con fechas en formato inválido: 0
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<details>
+  <summary>Evidencia</summary>
+  <img src="https://robertcastro.co/wp-content/uploads/2024/07/hecho_movimiento.jpg">
+</details>
 </div>
 </div>
 </div>
-
 </div>
 </body>
 
